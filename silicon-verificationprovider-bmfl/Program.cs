@@ -1,6 +1,10 @@
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using silicon_verificationprovider_bmfl.Data.Contexts;
+using silicon_verificationprovider_bmfl.Services;
+using System.Diagnostics;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
@@ -8,7 +12,28 @@ var host = new HostBuilder()
     {
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
+        services.AddDbContext<DataContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("VerificationRequestDatabase")));
+
+        services.AddSingleton<IVerificationService, VerificationService>();
+
     })
     .Build();
 
-host.Run();
+using (var scope = host.Services.CreateScope())
+{
+    try
+    {
+        var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+        var migrations = context.Database.GetPendingMigrations();
+        if (migrations != null && migrations.Any())
+        {
+            context.Database.Migrate();
+        }
+    }
+    catch (Exception ex)
+    {
+        Debug.WriteLine($"ERROR : VerificationProvider.Program.cs :: {ex.Message}");
+    }
+}
+
+    host.Run();
