@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "silicon-verificationprovider-bmfl", "silicon-verificationprovider-bmfl\silicon-verificationprovider-bmfl.csproj", "{7F5582C6-069F-4142-90A0-EBDEC11A459F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F5582C6-069F-4142-90A0-EBDEC11A459F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5582C6-069F-4142-90A0-EBDEC11A459F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5582C6-069F-4142-90A0-EBDEC11A459F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5582C6-069F-4142-90A0-EBDEC11A459F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C06DF197-A1DE-4740-9328-366E7CB7E572}
+	EndGlobalSection
+EndGlobal
